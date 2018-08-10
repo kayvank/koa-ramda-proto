@@ -1,0 +1,40 @@
+* cs-pubish-api todo
+
+** nodes
+*** client posts new node
+**** node is publishable
+***** store / update node
+***** edge correlation
+****** new edge
+******* TODO create a new edge. 
+******* TODO insert edge. 
+******** convert to cs-publish-edges proto
+******* TODO update edge. 
+******** TODO add transition edge
+******* TODO fetch edge 
+******** by isrc
+******** by state
+** status
+*** client posts new status
+**** update edge
+***** fetch edge & update the transition node
+
+
+* working with Albert. changes  area:
+  
+** need to save the action form the video. the action will tell me if this is delete
+
+***  possible commands:  publish, republish, delete
+*** if delete -> the command = delete
+
+*** if delete before publish, then no transaction to Albert
+
+*** albert will add the list of subscribers to the video.
+*** status payload:
+    {"isrc": "isrc-123", "youtubeId": "yt-123", "assetId": "asset-123", "status": "completed", "errors:[] } //completed success
+    {isrc: 'isrc-123', youtubeId: 'yt-123', assetId: 'asset-123', status: 'completed', errors:['err1', 'err2'] } //complete with error
+    {isrc: 'isrc-123', status: 'processing' }
+
+status.processing wait for 12 hours
+status.completed
+add to readme the endpoints

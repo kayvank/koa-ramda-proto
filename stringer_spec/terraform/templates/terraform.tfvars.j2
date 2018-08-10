@@ -1,0 +1,15 @@
+team                        = "{{ _team }}"
+service                     = "{{ _service }}"
+region                      = "{{ _aws_region }}"
+environment                 = "{{ _env }}"
+env_shortname               = "{{ _env_shortName }}"
+
+dynamo_videos_read            = "{{ _dynamo.videos.read_capacity }}"
+dynamo_videos_write           = "{{ _dynamo.videos.write_capacity }}"
+dynamo_videos_index_read      = "{{ _dynamo.videos.index.read_capacity }}"
+dynamo_videos_index_write     = "{{ _dynamo.videos.index.write_capacity }}"
+
+dynamo_workflow_read        = "{{ _dynamo.workflow.read_capacity }}"
+dynamo_workflow_write       = "{{ _dynamo.workflow.write_capacity }}"
+dynamo_workflow_index_read  = "{{ _dynamo.workflow.index.read_capacity }}"
+dynamo_workflow_index_write = "{{ _dynamo.workflow.index.write_capacity }}"

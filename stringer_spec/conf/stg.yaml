@@ -1,0 +1,20 @@
+---
+_env: staging
+_env_shortName: stg
+_statsd_tag: stg
+_log_level: info
+
+_dynamo:   
+  videos:          
+    read_capacity:  20
+    write_capacity: 5
+    index:
+      read_capacity:  20
+      write_capacity: 5
+
+  workflow:         
+    read_capacity:  20
+    write_capacity: 10
+    index:
+      read_capacity:  20
+      write_capacity: 10

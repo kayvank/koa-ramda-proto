@@ -1,0 +1,41 @@
+version: '2'
+volumes:
+  config:
+  build:
+  node_modules:
+services:
+  stringer:
+    image: vevo/stringer:$STRINGER_VERSION
+    volumes:
+      - ./stringer_spec:/spec:ro
+      - build:/build
+      - node_modules:/node_modules
+      - config:/root/.aws
+    environment:
+      BUILD_DIR: /build
+      SPEC_DIR: /spec
+      AWS_REGION: $AWS_REGION
+      CLUSTER: $CLUSTER
+      AWS_ACCOUNT: $AWS_ACCOUNT
+      AWS_PROFILE: default
+  config:
+    image: vevo/stringer-awsconfig:$AWSCONFIG_VERSION
+    environment:
+      - AWS_ACCOUNT
+      - DEV_AWS_ACCESS_KEY_ID
+      - DEV_AWS_SECRET_ACCESS_KEY
+      - STG_AWS_ACCESS_KEY_ID
+      - STG_AWS_SECRET_ACCESS_KEY
+      - PRD_AWS_ACCESS_KEY_ID
+      - PRD_AWS_SECRET_ACCESS_KEY
+    volumes:
+      - config:/data
+  node:
+    image: $DOCKER_NODE_IMAGE:$DOCKER_NODE_VERSION
+    working_dir: /vevo
+    volumes:
+      - /etc/.npmrc:/root/.npmrc:ro
+      - ./:/vevo
+      - node_modules:/node_modules
+      - config:/root/.aws
+      - build:/buildack

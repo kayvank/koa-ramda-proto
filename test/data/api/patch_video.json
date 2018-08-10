@@ -1,0 +1,185 @@
+{
+
+  "title": "El Arriero",
+  "startDate": "2016-07-19T02:00:00.000Z",
+  "duration": 463320,
+  "sourceResolution": "3840×2160",
+  "assets": [
+    {
+      "type": "Video",
+      "path": "s3://Video-Archive/ARUV71600154/60680B60-9F09-4DD4-896A-DBB02FEFDDE1/A10301A0003634164R_T-110659719636_Video_001-001.mp4"
+    },
+    {
+      "type": "Captions",
+      "path": "s3://some-bucket/lyrics.cc"
+    },
+    {
+      "type": "Thumbnail",
+      "path": "s3://some-bucket/picture.jpg"
+    }
+  ],
+  "releaseDate": "2000-01-31T00:00:00.000Z",
+  "copyright": "(C) 2000 Universal Music Argentina S.A.",
+  "copyrightYear": 2000,
+  "language": "es",
+  "shortUrl": "http://vevo.ly/lagxsI",
+  "thumbnailUrl": "http://img.cache.vevo.com/thumb/cms/05d0306b1eeebd44ff7d96bb2e054f862016187161945692.jpg",
+  "artists": [
+    {
+      "name": "Divididos",
+      "role": "Main",
+      "urlSafeName": "divididos",
+      "thumbnailUrl": "http://img.cache.vevo.com/thumb/cms/7B0534F4FD9014FF58ECD46B2DAEFEDB.jpg"
+    }
+  ],
+  "credits": [
+    {
+      "role": "Director",
+      "name": "LCN Productions"
+    },
+    {
+      "role": "Producer",
+      "name": "LCN Productions"
+    },
+    {
+      "role": "Composer",
+      "name": "Atahualpa Yupanqui"
+    },
+    {
+      "role": "Editor",
+      "name": "LCN Productions"
+    }
+  ],
+  "weightedGenres": [
+    {
+      "genre": "rock-en-espanol",
+      "parent": "latino",
+      "weight": 90
+    }
+  ],
+  "contentProviders": [
+    "UMGI"
+  ],
+  "deliveringProvider": "UMGI",
+  "repertoireOwners": [
+    "Universal-Music"
+  ],
+  "categories": [
+    "Audio"
+  ],
+  "audioIsrc": "ARF140000080",
+  "youTube": {
+    "id": "WTi6QxwZWmk",
+    "assetId": "A012345678901234",
+    "description": "killer vid",
+    "channel": {
+      "name": "WePlayEm"
+    }
+  },
+  "premieres": [
+    {
+      "country": "DE",
+      "startDate": "2017-01-01T00:00:00Z",
+      "endDate": "2017-01-08T00:00:00Z"
+    }
+  ],
+  "streams": [
+    {
+      "provider": "Amazon",
+      "format": "hls",
+      "url": "http://hls-video.vevo.com/v3/hls/2014/10/AEA040800053/400fb244-bdd0-4c18-b682-be81ae0186f7/index.m3u8",
+      "enabled": true,
+      "created": "2013-08-28T20:35:22.103Z",
+      "modified": "2014-10-09T07:15:06.187Z"
+    },
+    {
+      "provider": "Amazon",
+      "format": "mp4",
+      "quality": "high",
+      "url": "http://mp4-video.vevo.com/v3/h264/AEA040800053/aea040800053_high_1280x720_h264_2000_aac_128.mp4",
+      "enabled": true,
+      "created": "2013-08-28T20:35:22.103Z",
+      "modified": "2014-01-29T11:04:19.707Z"
+    },
+    {
+      "provider": "Amazon",
+      "format": "mp4",
+      "quality": "low",
+      "url": "http://mp4-video.vevo.com/v3/h264/AEA040800053/aea040800053_low_176x144_h264_56_aac_24.mp4",
+      "enabled": true,
+      "created": "2013-08-28T20:35:22.103Z",
+      "modified": "2014-01-29T11:04:19.707Z"
+    },
+    {
+      "provider": "Amazon",
+      "format": "mp4",
+      "quality": "medium",
+      "url": "http://mp4-video.vevo.com/v3/h264/AEA040800053/aea040800053_med_480x360_h264_500_aac_128.mp4",
+      "enabled": true,
+      "created": "2013-08-28T20:35:22.103Z",
+      "modified": "2014-01-29T11:04:19.707Z"
+    }
+  ],
+  "acoustic": false,
+  "allowEmbed": true,
+  "allowMobile": true,
+  "alternateVersion": false,
+  "behindTheScenes": false,
+  "certified": false,
+  "deleted": false,
+  "documentary": false,
+  "explicit": false,
+  "hasLyrics": false,
+  "interview": false,
+  "live": false,
+  "vevoLive": false,
+  "official": false,
+  "originalContent": false,
+  "lyricVideo": false,
+  "private": false,
+  "pseudoVideo": false,
+  "teaser": false,
+  "unlisted": false,
+  "policy": {
+    "monetizable": [
+      "AI",
+      "AU",
+      "BM",
+      "BR",
+      "IO",
+      "KY",
+      "FK",
+      "FR",
+      "DE",
+      "GI",
+      "IE",
+      "IT",
+      "MX",
+      "MS",
+      "NL",
+      "NZ",
+      "PN",
+      "PL",
+      "SH",
+      "GS",
+      "ES",
+      "TC",
+      "GB",
+      "VG"
+    ],
+    "viewable": [
+      "*"
+    ]
+  },
+  "lyrics": "Something en espanol...",
+  "brandSafetyScore": 0,
+  "subscribers": [
+    "Amazon",
+    "YouTube"
+  ],
+  "created": "2016-07-18T16:19:47.987Z",
+  "createByApplication": "cs-felix-ingestion",
+  "modified": "2016-07-18T16:59:08.22Z",
+  "modifiedByApplication": "CMS",
+  "modifiedByUser": "some.person@vevo.com"
+}

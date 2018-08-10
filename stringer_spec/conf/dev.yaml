@@ -1,0 +1,20 @@
+---
+_env:              development
+_env_shortName:    dev 
+_statsd_tag: dev
+_log_level: info
+
+_dynamo:   
+  videos:
+    read_capacity:  5
+    write_capacity: 5
+    index:
+      read_capacity:  5
+      write_capacity: 5
+
+  workflow:         
+    read_capacity:  5
+    write_capacity: 5
+    index:
+      read_capacity:  5
+      write_capacity: 5

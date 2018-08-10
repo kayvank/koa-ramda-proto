@@ -1,0 +1,65 @@
+---
+_team: content-services
+_service: cs-publish-api
+_aws_region:        us-east-1
+terraform:
+  remoteState:
+    key: '{{ _team }}_{{_service}}.tfstate'
+
+_port: 3000
+_min_replicas: 2
+_max_replicas: 3
+
+_health_check:
+  path: /public/up
+
+vars_templates:
+  - name: generic-service
+    vars:
+      autoDNS: True
+      name: '{{ _service }}'
+      namespace: '{{ _team }}'
+      image: '{{ docker_image | default("vevo/" + _service + ":latest") }}'
+      port: '{{ _port }}'
+      service:
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+      env:
+        AWS_REGION: '{{ _aws_region }}'
+        SERVICE_PORT: '{{ _port }}'
+        SERVICE_NAME: '{{ _service }}'
+        DATADOG_PREFIX: '{{ _service }}'
+        DATADOG_STATSD_HOST: dd-agent.kube-system
+        STATSD_HOST: dd-agent.kube-system
+        LOG_LEVEL: '{{ _log_level }}'
+        STATSD_TAG: '{{_statsd_tag}}'
+        BUILD_VERSION: '{{ build_version }}'
+        GITTAG: '{{ gittag }}'
+      resources:
+        limits:
+          cpu: 2
+          memory: 1536Mi
+        requests:
+          cpu: 1
+          memory: 1024Mi
+      livenessProbe:
+        timeoutSeconds: 1
+        httpGet:
+          path: '{{ _health_check.path }}'
+      readinessProbe:
+        httpGet:
+          path: '{{ _health_check.path }}'
+        initialDelaySeconds: 3
+kubernetes:
+  horizontalpodautoscalers:
+  - metadata:
+      name: '{{ _service }}'
+      namespace: '{{ _team }}'
+    spec:
+      minReplicas: '{{ _min_replicas }}'
+      scaleTargetRef:
+        apiVersion: autoscaling/v1
+        kind: Deployment
+        name: '{{ _service }}'
+      maxReplicas: '{{ _max_replicas }}'
+      targetCPUUtilizationPercentage: 43

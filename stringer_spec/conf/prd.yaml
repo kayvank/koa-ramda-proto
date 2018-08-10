@@ -1,0 +1,20 @@
+---
+_env: production
+_env_shortName: prd
+_statsd_tag: prd
+_log_level: warn
+
+_dynamo:   
+  videos:          
+    read_capacity:  20
+    write_capacity: 15
+    index:
+      read_capacity:  20
+      write_capacity: 15
+
+  workflow:         
+    read_capacity:  20
+    write_capacity: 15
+    index:
+      read_capacity:  20
+      write_capacity: 15

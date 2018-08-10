@@ -1,0 +1,26 @@
+{
+  "isrc": "quis esse id nostrud",
+  "client": {
+    "name": "youtube"
+  },
+  "policy": {
+    "monetizable": [
+      "UA",
+      "DE",
+      "US"
+    ],
+    "viewable": [
+      "US",
+      "SA"
+    ]
+  },
+  "isPrivate": false,
+  "isPaused": false,
+  "startDate": "4422-06-13T03:49:32.356Z",
+  "title": "test-title",
+  "description": "test-description",
+  "artist": {
+    "name": "test-artist-name",
+    "role": "test-artist-role"
+  }
+}

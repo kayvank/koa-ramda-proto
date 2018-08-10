@@ -1,0 +1,42 @@
+[
+{
+    "isrc": "ES1021600400",
+    "client": "youtube",
+    "state": "failed",
+    "status_report":{
+        "key-1": "value",
+        "key-2": ["value", "value2"],
+        "key-3": "value"
+    }
+},
+{
+    "isrc": "ES1021600401",
+    "client": "youtube",
+    "state": "completed",
+    "status_report":{
+        "youtube_id": "CI2wfoIKrlM",
+        "asset_id": "A852218002304758"
+    }
+},
+{
+    "isrc": "ES1021600402",
+    "client": "youtube",
+    "state": "delivered"
+},
+{
+    "isrc": "ES1021600402",
+    "client": "youtube",
+    "state": "active"
+},
+{
+    "isrc": "ES1021600402",
+    "client": "youtube",
+    "state": "queue"
+},
+{
+    "isrc": "ES1021600402",
+    "client": "youtube",
+    "state": "pause"
+},
+
+]

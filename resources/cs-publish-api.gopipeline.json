@@ -1,0 +1,283 @@
+{
+  "name": "cs-publish-api",
+  "environment_variables": [
+    {
+      "secure": false,
+      "name": "DOCKER_NODE_VERSION",
+      "value": "9.2-wheezy"
+    }
+  ],
+  "group": "content-services",
+  "materials": [
+    {
+      "url": "git@github.com:VEVO/cs-publish-api.git",
+      "type": "git"
+    }
+  ],
+  "stages": [
+    {
+      "name": "stage_build",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "build",
+          "environment_variables": [
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_SUCCESS",
+              "value": "##cs-ops-build"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_FAILURE",
+              "value": "##cs-ops-build"
+            }
+          ],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "build"
+              ]
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_failure"
+              ],
+              "run_if": "failed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stage_dev",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "dev",
+          "environment_variables": [
+            {
+              "value": "dev",
+              "secure": false,
+              "name": "AWS_ACCOUNT"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_SUCCESS",
+              "value": "##cs-ops-dev"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_FAILURE",
+              "value": "##cs-ops-dev"
+            }
+          ],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "dev"
+              ]
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_failure"
+              ],
+              "run_if": "failed"
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_success"
+              ],
+              "run_if": "passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stage_stg",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "stg",
+          "environment_variables": [
+            {
+              "value": "stg",
+              "secure": false,
+              "name": "AWS_ACCOUNT"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_SUCCESS",
+              "value": "##cs-ops-stg"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_FAILURE",
+              "value": "##cs-ops-stg"
+            }
+          ],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "stg"
+              ]
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_failure"
+              ],
+              "run_if": "failed"
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_success"
+              ],
+              "run_if": "passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stage_prd",
+      "approval": {
+        "type": "manual"
+      },
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "prd",
+          "environment_variables": [
+            {
+              "value": "prd",
+              "secure": false,
+              "name": "AWS_ACCOUNT"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_SUCCESS",
+              "value": "##cs-ops-prd"
+            },
+            {
+              "secure": false,
+              "name": "SLACK_CHANNELS_FAILURE",
+              "value": "##cs-ops-prd"
+            }
+          ],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "prd"
+              ]
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_failure"
+              ],
+              "run_if": "failed"
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_success"
+              ],
+              "run_if": "passed"
+            }
+          ],
+          "tasks": [
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "terraform_plan"
+              ],
+              "run_if": "passed"
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "terraform_apply"
+              ],
+              "run_if": "passed"
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_success"
+              ],
+              "run_if": "passed"
+            },
+            {
+              "type": "exec",
+              "command": "make",
+              "arguments": [
+                "slack_failure"
+              ],
+              "run_if": "failed"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

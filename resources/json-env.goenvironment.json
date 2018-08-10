@@ -1,0 +1,6 @@
+{
+    "pipelines": [
+        "cs-publish-api"
+    ],
+    "name": "json-env"
+}
